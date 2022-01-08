@@ -8,7 +8,7 @@ datasource db {
 }
 
 model post {
-  id      Int    @id
+  id      Int    @id @unique(map: "id_UNIQUE") @default(autoincrement())
   title   String @db.VarChar(50)
   content String @db.VarChar(255)
 }
