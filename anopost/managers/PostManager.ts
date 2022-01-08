@@ -11,7 +11,8 @@ class PostManager {
     const created = await prisma.post.create({
       data: { 
         title: post.title,
-        content: post.content
+        content: post.content,
+        author: post.author
       },
     });
 

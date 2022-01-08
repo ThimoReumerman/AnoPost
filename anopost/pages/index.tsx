@@ -10,6 +10,7 @@ interface PostProps {
 }
 
 const Home: NextPage<PostProps> = (props: PostProps) => {  
+  console.log(props);
   return (
     <div>
       <Head>
@@ -29,6 +30,7 @@ const Home: NextPage<PostProps> = (props: PostProps) => {
               <div key={`post_${post.id}`} id={`post_${post.id}`} className="post grid grid-cols-1 gap-4 max-w-sm rounded overflow-hidden shadow-lg bg-emerald-100">
                 <h3 className="title text-xl font-bold">{post.title}</h3>
                 <p className="content">{post.content}</p>
+                <p className="author font-italic font-thin">{post.author}</p>
               </div>);
           })}
         </div>
