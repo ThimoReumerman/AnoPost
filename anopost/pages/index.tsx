@@ -2,16 +2,14 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import axios from 'axios';
 import { post } from '@prisma/client';
+import PostForm from '../components/forms/post';
 
 // Props type
 interface PostProps {
   posts: post[] | null
 }
 
-const Home: NextPage<PostProps> = (props: PostProps) => {
-  console.log("MY PROPS");
-  console.log(props);
-  
+const Home: NextPage<PostProps> = (props: PostProps) => {  
   return (
     <div>
       <Head>
@@ -21,12 +19,15 @@ const Home: NextPage<PostProps> = (props: PostProps) => {
       </Head>
 
       <main>
-        <h1>Welcome to AnoPost</h1>
-        <div id="posts">
+        <h1 className="text-5xl font-medium leading-tight mt-0 mb-2">Welcome to AnoPost</h1>
+
+        <PostForm />
+
+        <div id="posts" className="grid grid-cols-1 gap-10 justify-center">
           {props.posts?.map(post => {
             return (
-              <div id={`post_${post.id}`} className="post">
-                <h3 className="title">{post.title}</h3>
+              <div key={`post_${post.id}`} id={`post_${post.id}`} className="post grid grid-cols-1 gap-4 max-w-sm rounded overflow-hidden shadow-lg bg-emerald-100">
+                <h3 className="title text-xl font-bold">{post.title}</h3>
                 <p className="content">{post.content}</p>
               </div>);
           })}
