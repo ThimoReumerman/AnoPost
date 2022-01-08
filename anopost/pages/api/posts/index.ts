@@ -7,13 +7,9 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  console.log("POSTS INDEX");
-
   switch (req.method) {
     case 'GET': {
       const posts = await PostManager.getAllPosts();
-      console.log(posts);
-
       return res.status(200).json(posts);
     }
 
