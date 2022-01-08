@@ -20,7 +20,11 @@ class PostManager {
 
   // Get all posts
   static getAllPosts = async (): Promise<post[]> => {
-    const posts = await prisma.post.findMany();
+    const posts = await prisma.post.findMany({
+      orderBy: {
+        id: 'desc'
+      }
+    });
 
     return posts;
   };

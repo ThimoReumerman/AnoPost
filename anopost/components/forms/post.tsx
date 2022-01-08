@@ -9,7 +9,9 @@ const PostForm = (): JSX.Element => {
   const onClick = (e: any) => {
     e.preventDefault();
 
-    const post: post = {title: title, content: content};
+    if (title == '' || content == '') return;
+    
+    const post: post = {id: 0, title: title, content: content};
 
     axios
       .post<post>("http://localhost:3000/api/posts", post)
@@ -19,7 +21,7 @@ const PostForm = (): JSX.Element => {
   }
 
   return (
-    <form className='grid grid-cols-1 gap-4'>
+    <form className='grid grid-cols-1 gap-4 mb-50 '>
       <label htmlFor="title">Title
         <input className="bg-slate-100" name="title" type="text" required value={title} onChange={(e) => setTitle(e.target.value)} />
       </label>
@@ -28,7 +30,7 @@ const PostForm = (): JSX.Element => {
         <textarea className="bg-slate-100" name="content" required value={content} onChange={(e) => setContent(e.target.value)} />
       </label>
 
-      <button onClick={(e) => onClick(e)}>Post</button>
+      <button className="bg-slate-500 w-1/5 rounded" onClick={(e) => onClick(e)}>Post</button>
     </form>
   )
 
