@@ -9,16 +9,21 @@ const prisma = new PrismaClient({
 
 class PostManager {
   // Create new post
-  static createPost = async (post: post): Promise<post> => {
-    const created = await prisma.post.create({
+  static createPost = async (post: post): Promise<post | null> => {
+    await prisma.post.create({
       data: { 
         title: post.title,
         content: post.content,
         author: post.author
       },
+    }).then(post => {
+      return post;
+    }).catch(error => {
+      console.error("API CREATE ERROR: ");
+      console.error(error);
     });
 
-    return created;
+    return null;
   };
 
   // Get all posts
