@@ -19,17 +19,13 @@ const PostForm = (): JSX.Element => {
     }
 
     axios
-      .post<post>("http://localhost:3000/api/posts", post, {
+      .post<post>("/api/posts", post, {
         headers,
         withCredentials: true
       })
       .then(post => {
         window.location.reload();
-      })
-      .catch(async error => {
-        console.error("AXIOS ERROR:");
-        console.error(await error);
-      })
+      });
   }
 
   return (

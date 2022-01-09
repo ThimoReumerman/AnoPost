@@ -15,8 +15,6 @@ const handler = async (
     }
 
     case 'POST': {
-      console.log("POST REQUEST: ");
-      console.log(req);
       const created = await PostManager.createPost(req.body);
 
       return res.status(200).json(created);
