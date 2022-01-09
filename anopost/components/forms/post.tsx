@@ -26,9 +26,9 @@ const PostForm = (): JSX.Element => {
       .then(post => {
         window.location.reload();
       })
-      .catch(error => {
+      .catch(async error => {
         console.error("AXIOS ERROR:");
-        console.error(error);
+        console.error(await error);
       })
   }
 
