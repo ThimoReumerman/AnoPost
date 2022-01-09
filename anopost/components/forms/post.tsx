@@ -17,10 +17,11 @@ const PostForm = (): JSX.Element => {
     const headers: AxiosRequestHeaders = {
       "Content-Type": "application/json"
     }
-    
+
     axios
       .post<post>("http://localhost:3000/api/posts", post, {
-        headers
+        headers,
+        withCredentials: true
       })
       .then(post => {
         window.location.reload();
