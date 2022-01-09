@@ -3,7 +3,9 @@ import { PrismaClient } from "@prisma/client";
 import { post } from "@prisma/client";
 
 // Create new Prisma client
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  log: ['info', 'warn', 'error']
+});
 
 class PostManager {
   // Create new post

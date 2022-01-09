@@ -9,8 +9,7 @@ interface PostProps {
   posts: post[] | null
 }
 
-const Home: NextPage<PostProps> = (props: PostProps) => {  
-  console.log(props);
+const Home: NextPage<PostProps> = (props: PostProps) => {
   return (
     <div>
       <Head>
