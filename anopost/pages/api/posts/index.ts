@@ -7,6 +7,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
+  console.log(`Recieved a ${req.method} Request: `);
   switch (req.method) {
     case 'GET': {
       const posts = await PostManager.getAllPosts();
@@ -14,6 +15,8 @@ const handler = async (
     }
 
     case 'POST': {
+      console.log("POST REQUEST: ");
+      console.log(req);
       const created = await PostManager.createPost(req.body);
 
       return res.status(200).json(created);
