@@ -1,5 +1,5 @@
 import { post } from '@prisma/client';
-import axios from 'axios';
+import axios, { AxiosRequestHeaders } from 'axios';
 import {useState} from 'react';
 
 const PostForm = (): JSX.Element => {
@@ -14,8 +14,14 @@ const PostForm = (): JSX.Element => {
     
     const post: post = {id: 0, title: title, content: content, author: author};
 
+    const headers: AxiosRequestHeaders = {
+      "Content-Type": "application/json"
+    }
+    
     axios
-      .post<post>("http://localhost:3000/api/posts", post)
+      .post<post>("http://localhost:3000/api/posts", post, {
+        headers
+      })
       .then(post => {
         window.location.reload();
       })
